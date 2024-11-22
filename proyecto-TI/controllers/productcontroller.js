@@ -41,6 +41,17 @@ const productController = {
           console.log(error); // Maneja errores
           res.status(500).send('Error al listar los productos más recientes'); // Responde con un error si algo falla
       });
+  },
+  recommended: function(req, res) {
+    db.Product.findAll({
+      where: { rating: { [op.gte]: 8 } }
+    })
+    .then(product => {
+      res.render('product/recommended', { product });
+    })
+    .catch(error => {
+        console.log(error);
+    });
   }
   
 };
