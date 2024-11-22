@@ -1,3 +1,5 @@
+const { underscoredIf } = require("sequelize/lib/utils");
+
 module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define(
       'Product', // Nombre del modelo
@@ -23,15 +25,16 @@ module.exports = (sequelize, DataTypes) => {
       {
         tableName: 'products', // Nombre de la tabla en la base de datos
         timestamps: true,      // Incluye las columnas createdAt y updatedAt
+        underscored: true,
       }
     );
   
     // Aquí puedes definir asociaciones si existen
     Product.associate = (models) => {
       // Ejemplo: Producto pertenece a una categoría
-      Product.belongsTo(models.Category, {
-        foreignKey: 'categoryId',
-        as: 'category',
+      Product.belongsTo(models.Users, {
+        foreignKey: 'user_id',
+        as: 'user',
       });
     };
   
