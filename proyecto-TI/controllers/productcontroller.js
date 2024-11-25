@@ -5,8 +5,8 @@ const productController = {
     // Mostrar todos los productos
     list: (req, res) => {
         db.Product.findAll()
-            .then(product => {
-                res.render('product', { product }); // Renderiza la vista 'products.ejs' con los productos
+            .then(products => {
+                return res.render('index', { products}); // Renderiza la vista 'products.ejs' con los productos
             })
             .catch(err => {
                 console.log(err);
