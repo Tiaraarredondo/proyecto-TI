@@ -18,7 +18,7 @@ const productController = {
         db.Product.findByPk(id)
             .then(product => {
                 if (product) {
-                    res.render('product/detail', { product }); // Renderiza la vista con el producto
+                    res.render('product', { product }); // Renderiza la vista con el producto
                 } else {
                     res.status(404).send('Producto no encontrado'); // Producto no encontrado
                 }
