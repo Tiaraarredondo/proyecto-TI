@@ -47,7 +47,7 @@ const productController = {
             where: { rating: { [op.gte]: 8 } }
         })
             .then(product => {
-                res.render('product/recommended', { product });
+                res.render('index/recommended', { product });
             })
             .catch(error => {
                 console.log(error);
