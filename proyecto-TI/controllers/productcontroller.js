@@ -4,7 +4,7 @@ const op = db.Sequelize.Op;
 const productController = {
     // Mostrar todos los productos
     list: (req, res) => {
-        db.Products.findAll()
+        db.Product.findAll()
             .then(products => {
                 res.render('products', { products }); // Renderiza la vista 'products.ejs' con los productos
             })
@@ -15,7 +15,7 @@ const productController = {
     },
     detail: function(req, res) {
       const { id } = req.params;
-      db.Products.findByPk(id)
+      db.Product.findByPk(id)
           .then(product => {
               if (product) {
                   res.render('products/detail', { product }); // Renderiza la vista con el producto
@@ -30,7 +30,7 @@ const productController = {
   
     // Mostrar el formulario para crear un nuevo producto
     new: function(req, res) {
-      db.Products.findAll({
+      db.Product.findAll({
           order: [['created_at', 'DESC']], // Ordena por fecha de creación descendente
           limit: 5 // Limita el resultado a los últimos 5 productos
       })
