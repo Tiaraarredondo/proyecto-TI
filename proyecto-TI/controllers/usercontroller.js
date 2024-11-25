@@ -1,4 +1,5 @@
-const db = require('../database/models'); // Conexión a la base de datos
+const db = require('../database/models');
+const op = db.Sequelize.Op; // Conexión a la base de datos
 const bcrypt = require('bcrypt'); // Para encriptar las contraseñas
 
 const userController = {
@@ -6,7 +7,7 @@ const userController = {
         if (req.session.usuarioLogueado != undefined) {
             return res.redirect("/");
         }
-        db.Usuario.findOne({
+        db.User.findOne({
             where: {
                 [op.or]: [
                     {email: req.body.nombre},
@@ -37,11 +38,40 @@ const userController = {
         if (req.session.usuarioLogueado != undefined) {
             return res.redirect("/");
         }
-        if(req.query.error){
-            return res.render('registro', {title: 'Registración', error: true, message:'El nombre de usuario o email ya existe'});
-        }else{
-            return res.render('registro', {title: 'Registración', error: false, message:'El nombre de usuario o email ya existe'});
-        }
+        db.User.findOne({
+            where: {
+                [op.or]:[
+                    {email: req.body.email},
+                    {nombre: req.body.nombre}
+                ]
+            }
+        })
+        .then(function (usuario) {
+            if(req.body.email == ""){
+                res.render('registro', {title: 'Registración', error: true, message:'El email no puede estar vacío'});
+            } else if (req.body.contraseña == ""){
+                return res.render('registro', {title: 'Registración', error: true, message:'La contraseña no puede estar vacía'});
+            } else if (usuario != null){
+                return res.render('registro', {title: 'Registración', error: true, message:'El nombre de usuario o el email ya existe. Elija otro.'});
+            } else if(usuario == null){
+                let contraseña = bcrypt.hashSync(req.body.contraseña, 10);
+
+                db.User.create({
+                    nombre: req.body.nombre,
+                    email: req.body.email,
+                    contraseña: contraseña,
+                })
+                .then(function () {
+                    return res.redirect('/user/login');
+                })
+            }else {
+                return res.redirect('/user/register?error=true');
+            }
+            
+        })
+        .catch( function(error){
+            console.log(error);
+        })
     },
 
 

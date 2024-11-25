@@ -1,48 +1,42 @@
-module.exports = function(sequelize, DataTypes) {
-    /* alias */
-    let alias = "Users";
-
-    /* configuración de las columnas */
+module.exports = (sequelize, DataTypes) => {
+    const alias = "Users" ;
     let cols = {
         id: {
+            type: DataTypes.INTEGER,
             autoIncrement: true,
-            primaryKey: true,
-            type: DataTypes.INTEGER
+            primaryKey: true
         },
-        nombre: {
-            type: DataTypes.STRING(50),
-            allowNull: false,
-            unique: true
+        usuario: {
+            type: DataTypes.STRING
         },
         email: {
-            type: DataTypes.STRING(100),
-            allowNull: false,
-            unique: true
+            type: DataTypes.STRING
         },
         contraseña: {
-            type: DataTypes.STRING(255),
-            allowNull: false
+            type: DataTypes.STRING
         }
     };
 
-    /* configuración de la tabla */
     let config = {
-        tableName: "users",
-        timestamps: true, // Usar created_at y updated_at
-        underscored: true // Usar snake_case en la base de datos
+        tableName: "users"
     };
 
-    /* definir el modelo */
-    let Users = sequelize.define(alias, cols, config);
+    const User = sequelize.define(alias, cols, config);
 
-    /* Asociaciones */
-    Users.associate = function(models) {
-        Users.hasMany(models.Product, {
-            as: "products",
-            foreignKey: "user_id",
-        });
+    User.associate = function (models) {
+        User.hasMany(models.Comments, { 
+            foreignKey: 'user_id',
+            as: 'comment'
+        })
     };
 
-    return Users;
-};
+    User.associate = function (models) {
+        User.hasMany(models.Product, { 
+            foreignKey: 'user_id',
+            as: 'products'
+        })
+    }
 
+    return User;
+
+}
