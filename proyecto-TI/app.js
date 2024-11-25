@@ -10,6 +10,8 @@ var productRouter = require('./routes/product');
 
 var app = express();
 
+var db = require('./database/models');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -38,6 +40,20 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.use(function (req, res, next) {
+
+  if (req.cookies.idUsuario != undefined && req.session.usuarioLogueado == undefined) {
+    db.Usuario.findByPk(req.cookies.idUsuario)
+      .then(function (user) {
+        req.session.usuarioLogueado = user;
+        res.locals.usuarioLogueado = user
+        return next()
+      })
+  } else {
+    return next();
+  }
 });
 
 module.exports = app;
