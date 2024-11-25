@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
           allowNull: false,
           defaultValue: 0,
         },
+        user_id:{
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        }
       },
       {
         tableName: 'products', // Nombre de la tabla en la base de datos
