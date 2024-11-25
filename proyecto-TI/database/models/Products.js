@@ -1,5 +1,3 @@
-const { underscoredIf } = require("sequelize/lib/utils");
-
 module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define(
       'Product', // Nombre del modelo
