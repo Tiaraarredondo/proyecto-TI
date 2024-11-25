@@ -6,7 +6,7 @@ const productController = {
     list: (req, res) => {
         db.Product.findAll()
             .then(products => {
-                res.render('products', { products }); // Renderiza la vista 'products.ejs' con los productos
+                res.render('index', { products }); // Renderiza la vista 'products.ejs' con los productos
             })
             .catch(err => {
                 console.log(err);
@@ -18,7 +18,7 @@ const productController = {
         db.Product.findByPk(id)
             .then(product => {
                 if (product) {
-                    res.render('products/detail', { product }); // Renderiza la vista con el producto
+                    res.render('index/detail', { product }); // Renderiza la vista con el producto
                 } else {
                     res.status(404).send('Producto no encontrado'); // Producto no encontrado
                 }
@@ -35,7 +35,7 @@ const productController = {
             limit: 5 // Limita el resultado a los últimos 5 productos
         })
             .then(products => {
-                res.render('products/new', { products }); // Renderiza una vista para mostrar los productos
+                res.render('index/new', { products }); // Renderiza una vista para mostrar los productos
             })
             .catch(error => {
                 console.log(error); // Maneja errores
@@ -47,7 +47,7 @@ const productController = {
             where: { rating: { [op.gte]: 8 } }
         })
             .then(product => {
-                res.render('product/recommended', { product });
+                res.render('index/recommended', { product });
             })
             .catch(error => {
                 console.log(error);
