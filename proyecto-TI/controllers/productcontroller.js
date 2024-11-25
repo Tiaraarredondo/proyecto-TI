@@ -6,7 +6,7 @@ const productController = {
     list: (req, res) => {
         db.Product.findAll()
             .then(products => {
-                res.render('index', { products }); // Renderiza la vista 'products.ejs' con los productos
+                return res.render('index', { products}); // Renderiza la vista 'products.ejs' con los productos
             })
             .catch(err => {
                 console.log(err);
@@ -18,7 +18,7 @@ const productController = {
         db.Product.findByPk(id)
             .then(product => {
                 if (product) {
-                    res.render('index/detail', { product }); // Renderiza la vista con el producto
+                    res.render('product/detail', { product }); // Renderiza la vista con el producto
                 } else {
                     res.status(404).send('Producto no encontrado'); // Producto no encontrado
                 }
@@ -34,8 +34,8 @@ const productController = {
             order: [['created_at', 'DESC']], // Ordena por fecha de creación descendente
             limit: 5 // Limita el resultado a los últimos 5 productos
         })
-            .then(products => {
-                res.render('index/new', { products }); // Renderiza una vista para mostrar los productos
+            .then(product => {
+                res.render('product/new', { product }); // Renderiza una vista para mostrar los productos
             })
             .catch(error => {
                 console.log(error); // Maneja errores
