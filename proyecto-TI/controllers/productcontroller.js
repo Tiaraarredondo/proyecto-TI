@@ -1,4 +1,5 @@
 const db = require('../database/models');
+const { search } = require('../routes');
 const op = db.Sequelize.Op;
 
 const productController = {
@@ -52,8 +53,32 @@ const productController = {
             .catch(error => {
                 console.log(error);
             });
+    },
+    
+    buscar: (req, res) => {
+        const { search } = req.query; // Obtén el término de búsqueda desde la query string
+    
+        // Verificar si el término de búsqueda está presente
+        if (!search) {
+          return res.status(400).send('No se especificó término de búsqueda');
+        }
+    
+        // Realizar la búsqueda en la base de datos
+        db.Product.findAll({
+          where: {
+            name: { [op.like]: `%${search}%` } // Búsqueda usando LIKE
+          }
+        })
+        .then(products => {
+          // Renderizar los resultados de la búsqueda
+          res.render('search-results', { products: products, query: search });
+        })
+            .catch(error => {
+                console.log(error); // Loguea errores inesperados.
+                res.status(500).send('Hubo un error al realizar la búsqueda'); // Responde con un mensaje genérico.
+            });
     }
-
+    
 };
 
 module.exports = productController;

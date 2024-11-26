@@ -56,4 +56,10 @@ app.use(function (req, res, next) {
   }
 });
 
+app.get('/product/search-results', (req, res) => {
+  const { search } = req.query;
+  // Aquí va tu lógica para buscar productos
+  res.send(`Resultado para ${search}`);
+});
+
 module.exports = app;
