@@ -8,18 +8,17 @@ const userController = {
             return res.redirect("/");
         }
         db.User.findOne({
-            where: {
-                [op.or]: [
-                    {email: req.body.nombre},
-                    {nombre: req.body.nombre}
-                ]
-            }
-        })
+          where: {
+              [op.or]: [
+                  { email: req.body.email }  // Asegúrate de que el campo sea 'email'
+              ]
+          }
+      })
         .then(function (usuario) {
             if(!usuario){
-                return res.redirect('/usuario/login?error=usuario');
+                return res.redirect('/users/login?error=usuario');
             } else if (bcrypt.compareSync(req.body.password, usuario.password) == false ){
-                return res.redirect('/usuario/login?error=password');
+                return res.redirect('/users/login?error=password');
             }else{
                 req.session.usuarioLogueado = usuario;
                 if(req.body.recordar != undefined){
@@ -48,11 +47,11 @@ const userController = {
         })
         .then(function (usuario) {
             if(req.body.email == ""){
-                res.render('registro', {title: 'Registración', error: true, message:'El email no puede estar vacío'});
+                res.render('register', {title: 'Registración', error: true, message:'El email no puede estar vacío'});
             } else if (req.body.contraseña == ""){
-                return res.render('registro', {title: 'Registración', error: true, message:'La contraseña no puede estar vacía'});
+                return res.render('register', {title: 'Registración', error: true, message:'La contraseña no puede estar vacía'});
             } else if (usuario != null){
-                return res.render('registro', {title: 'Registración', error: true, message:'El nombre de usuario o el email ya existe. Elija otro.'});
+                return res.render('register', {title: 'Registración', error: true, message:'El nombre de usuario o el email ya existe. Elija otro.'});
             } else if(usuario == null){
                 let contraseña = bcrypt.hashSync(req.body.contraseña, 10);
 
@@ -62,10 +61,10 @@ const userController = {
                     contraseña: contraseña,
                 })
                 .then(function () {
-                    return res.redirect('/user/login');
+                    return res.redirect('/users/login');
                 })
             }else {
-                return res.redirect('/user/register?error=true');
+                return res.redirect('/users/register?error=true');
             }
             
         })
