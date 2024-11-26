@@ -7,7 +7,7 @@ const userController = {
         if (req.session.usuarioLogueado != undefined) {
             return res.redirect("/");
         }
-        db.User.findOne({
+        db.Users.findOne({
           where: {
               [op.or]: [
                   { email: req.body.email }  // Asegúrate de que el campo sea 'email'
@@ -37,7 +37,7 @@ const userController = {
         if (req.session.usuarioLogueado != undefined) {
             return res.redirect("/");
         }
-        db.User.findOne({
+        db.Users.findOne({
             where: {
                 [op.or]:[
                     {email: req.body.email},
@@ -55,7 +55,7 @@ const userController = {
             } else if(usuario == null){
                 let contraseña = bcrypt.hashSync(req.body.contraseña, 10);
 
-                db.User.create({
+                db.Users.create({
                     nombre: req.body.nombre,
                     email: req.body.email,
                     contraseña: contraseña,
