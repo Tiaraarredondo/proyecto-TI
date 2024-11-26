@@ -26,7 +26,7 @@
 						<img src="./images/logo-mercado-liebre.svg">
 					</a>
 				</div>
-	
+
 				<div class="col-7 col-md-6">
 					<form action="" method="GET" class="search-form">
 						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
@@ -34,7 +34,7 @@
 						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
 					</form>
 				</div>
-	
+
 				<div class="col-12 col-md-4">
 					<a class="main-header_credit-link">
 						<i class="fas fa-hand-holding-usd"></i>
@@ -42,17 +42,17 @@
 					</a>
 				</div>
 			</div>
-	
+
 			<button class="btn-toggle-navbar">
 				<i class="fas fa-bars"></i>
 			</button>
-	
+
 			<nav class="main-navbar">
 				<ul class="left-navbar">
 					<li><a href="index">Todos los productos</a></li>
 					<!-- solo logueado <li><a href="">Cargar productos</a></li> -->
 				</ul>
-			
+
 				<ul class="right-navbar">
 					<!-- Estos li deben verse solo si el usuario está logueado 
 								<li> 
@@ -88,66 +88,72 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="container">
-        <h2 class="products-title">Agregar Producto<
-			<form action="/productos/submit" method="POST">
-				<div class="form-group">
-					<label for="imagen">Imagen del producto</label>
-					<input type="text" class="form-control" id="imagen" name="imagen" placeholder="Nombre de la imagen (ej. producto.jpg)" required>
-				</div>
-	
-				<div class="form-group">
-					<label for="nombre">Nombre del producto</label>
-					<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del producto" required>
-				</div>
-	
-				<div class="form-group">
-					<label for="descripcion">Descripción</label>
-					<textarea class="form-control" id="descripcion" name="descripcion" rows="4" required></textarea>
-				</div>
-	
-				<div class="form-group">
-					<label for="precio">Precio</label>
-					<input type="number" class="form-control" id="precio" name="precio" placeholder="Precio del producto" required>
-				</div>
-	
-				<button type="submit" class="btn btn-primary">Agregar Producto</button>
-			</form>
-		</div>
+				<h2 class="products-title">Agregar Producto< <form action="/productos/submit" method="POST">
+						<div class="form-group">
+							<label for="imagen">Imagen del producto</label>
+							<input type="text" class="form-control" id="imagen" name="imagen"
+								placeholder="Nombre de la imagen (ej. producto.jpg)" required>
+						</div>
 
+						<div class="form-group">
+							<label for="nombre">Nombre del producto</label>
+							<input type="text" class="form-control" id="nombre" name="nombre"
+								placeholder="Nombre del producto" required>
+						</div>
 
-	<!-- footer -->
-	<footer class="main-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-12 col-lg-4">
-					<article class="footer-data">
-						<i class="fas fa-credit-card"></i>
-						<h2>Pagá con tarjeta o en efectivo</h2>
-						<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago.
-							¡Y
-							siempre es seguro!</p>
-					</article>
-				</div>
-				<div class="col-12 col-lg-4">
-					<article class="footer-data">
-						<i class="fas fa-gift"></i>
-						<h2>Envío gratis desde $ 1.999</h2>
-						<p>Solo por estar registrado en Mercado Liebre tenés envíos gratis en miles de productos. Es un
-							beneficio de Mercado Puntos.</p>
-					</article>
-				</div>
-				<div class="col-12 col-lg-4">
-					<article class="footer-data">
-						<i class="fas fa-user-shield"></i>
-						<h2>Seguridad, de principio a fin</h2>
-						<p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque estás
-							siempre protegido.</p>
-					</article>
-				</div>
+						<div class="form-group">
+							<label for="descripcion">Descripción</label>
+							<textarea class="form-control" id="descripcion" name="descripcion" rows="4"
+								required></textarea>
+						</div>
+
+						<div class="form-group">
+							<label for="precio">Precio</label>
+							<input type="number" class="form-control" id="precio" name="precio"
+								placeholder="Precio del producto" required>
+						</div>
+
+						<button type="submit" class="btn btn-primary">Agregar Producto</button>
+						</form>
 			</div>
-		</div>
-	</footer>
-	<!-- /footer -->
+
+
+			<!-- footer -->
+			<footer class="main-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-lg-4">
+							<article class="footer-data">
+								<i class="fas fa-credit-card"></i>
+								<h2>Pagá con tarjeta o en efectivo</h2>
+								<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de
+									pago.
+									¡Y
+									siempre es seguro!</p>
+							</article>
+						</div>
+						<div class="col-12 col-lg-4">
+							<article class="footer-data">
+								<i class="fas fa-gift"></i>
+								<h2>Envío gratis desde $ 1.999</h2>
+								<p>Solo por estar registrado en Mercado Liebre tenés envíos gratis en miles de
+									productos. Es un
+									beneficio de Mercado Puntos.</p>
+							</article>
+						</div>
+						<div class="col-12 col-lg-4">
+							<article class="footer-data">
+								<i class="fas fa-user-shield"></i>
+								<h2>Seguridad, de principio a fin</h2>
+								<p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque
+									estás
+									siempre protegido.</p>
+							</article>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- /footer -->
 </body>
 
 </html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Include Head -->
 
 <head>
   <meta charset="UTF-8">
@@ -30,8 +29,8 @@
         <form action="/product/search-results" method="GET" class="search-form">
           <input type="text" name="search" placeholder="Buscar productos, marcas y más" class="search-form_input">
           <button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
-      </form>
-      
+        </form>
+
         <div class="col-12 col-md-4">
           <a class="main-header_credit-link">
             <i class="fas fa-hand-holding-usd"></i>
@@ -47,7 +46,7 @@
       <nav class="main-navbar">
         <ul class="left-navbar">
           <li><a href="index">Todos los productos</a></li>
-          <!-- solo logueado <li><a href="">Cargar productos</a></li> -->
+          <li><a href="">Cargar productos</a></li>
         </ul>
 
         <ul class="right-navbar">
@@ -89,15 +88,14 @@
       <div class="col-12">
         <h2 class="products-title">Productos</h2>
       </div>
-      
+
       <div class="row">
         <% for (let i=0; i < products.length; i++) { %>
           <div class="col-12 col-sm-6 col-lg-3">
             <section class="product-box">
               <a href="/product/detail/<%= products[i].id %>">
                 <figure class="product-box_image">
-                  <img src="<%= products[i].image%>"
-                    alt="<%= products[i].name %>">
+                  <img src="<%= products[i].image%>" alt="<%= products[i].name %>">
                 </figure>
                 <article class="product-box_data">
                   <h2>

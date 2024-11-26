@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +15,10 @@
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="../public/stylesheets/css/app.css">
 </head>
+
 <body>
 	<!-- Header -->
-	
+
 	<!-- /Header -->
 	<header class="main-header">
 		<div class="container">
@@ -26,7 +28,7 @@
 						<img src="./images/logo-mercado-liebre.svg">
 					</a>
 				</div>
-	
+
 				<div class="col-7 col-md-6">
 					<form action="search-results.ejs" method="GET" class="search-form">
 						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
@@ -34,7 +36,7 @@
 						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
 					</form>
 				</div>
-	
+
 				<div class="col-12 col-md-4">
 					<a class="main-header_credit-link">
 						<i class="fas fa-hand-holding-usd"></i>
@@ -42,19 +44,19 @@
 					</a>
 				</div>
 			</div>
-	
+
 			<button class="btn-toggle-navbar">
 				<i class="fas fa-bars"></i>
 			</button>
-	
+
 			<nav class="main-navbar">
 				<ul class="left-navbar">
 					<li><a href="index">Todos los productos</a></li>
 					<!-- solo logueado <li><a href="">Cargar productos</a></li> -->
 				</ul>
-			
+
 				<ul class="right-navbar">
-					
+
 					<!-- Estos li deben verse solo si el usuario está logueado 
 								<li> 
 									Nombre del usuario <i class="fas fa-user"></i>
@@ -80,31 +82,43 @@
 		</div>
 	</header>
 
-	
+
 	<!-- product detail -->
-	
-    <h1><%= product.title %></h1>
-    <p><strong>Prenda:</strong> <%= product.nombre ? product.nombre.title : 'No disponible' %></p>
-    <p><strong>descripcion:</strong> <%= product.description %></p>
-    <p><strong>Price:</strong> <%= product.price %></p>
-    <p><strong>Stock:</strong> <%= product.stock %> </p>
+
+	<h1>
+		<%= product.title %>
+	</h1>
+	<p><strong>Prenda:</strong>
+		<%= product.nombre ? product.nombre.title : 'No disponible' %>
+	</p>
+	<p><strong>descripcion:</strong>
+		<%= product.description %>
+	</p>
+	<p><strong>Price:</strong>
+		<%= product.price %>
+	</p>
+	<p><strong>Stock:</strong>
+		<%= product.stock %>
+	</p>
 
 
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title">Nombre del producto</h2> 
+			<h2 class="products-title">Nombre del producto</h2>
 			<p class="product-detail-description">
 				<a href="product-add.ejsindex.ejs">Editar</a>
 			</p>
 		</div>
-		
+
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src="./images/products/default-image.png" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						Descripción corta del producto. En la página principal solo se ven 2 líneas de estar descripción.Lorem ipsum dolor,
-						sit amet consectetur adipisicing elit. Tae ipsam amet eum, totam dolore libero illo unde? Consectetur dolorem neque
+						Descripción corta del producto. En la página principal solo se ven 2 líneas de estar
+						descripción.Lorem ipsum dolor,
+						sit amet consectetur adipisicing elit. Tae ipsam amet eum, totam dolore libero illo unde?
+						Consectetur dolorem neque
 						veritatis.</p>
 				</article>
 				<div class="col-12 col-lg-4">
@@ -113,8 +127,12 @@
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="profile.ejsindex.ejs">Nombre usuario: </a> </strong>
-								 Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore magnam, praesentium explicabo inventore molestias facilis labore. Fugit ipsa mollitia odit inventore consequuntur.</p>
+									<strong> <a href="profile.ejsindex.ejs">Nombre usuario: </a> </strong>
+									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur
+									adipisicing elit. Tempora doloribus enim aspernatur fugit corrupti suscipit sit
+									dolore magnam, praesentium explicabo inventore molestias facilis labore. Fugit ipsa
+									mollitia odit inventore consequuntur.
+								</p>
 							</div>
 						</article>
 						<article>
@@ -122,7 +140,8 @@
 							<div class="data">
 								<p class="user">
 									<strong> <a href="profile.ejsindex.ejs">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur.</p>
+									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur.
+								</p>
 							</div>
 						</article>
 						<article>
@@ -130,8 +149,9 @@
 							<div class="data">
 								<p class="user">
 									<strong> <a href="profile.ejsindex.ejs">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									</p>
+									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur
+									adipisicing elit.
+								</p>
 							</div>
 						</article>
 						<article>
@@ -139,7 +159,8 @@
 							<div class="data">
 								<p class="user">
 									<strong> <a href="profile.ejsindex.ejs">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet.</p>
+									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet.
+								</p>
 							</div>
 						</article>
 						<article>
@@ -147,8 +168,10 @@
 							<div class="data">
 								<p class="user">
 									<strong> <a href="profile.ejsindex.ejs">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore</p>
+									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur
+									adipisicing elit.
+									Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore
+								</p>
 							</div>
 						</article>
 
@@ -162,7 +185,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 	<!-- footer -->
 	<footer class="main-footer">
@@ -172,7 +195,8 @@
 					<article class="footer-data">
 						<i class="fas fa-credit-card"></i>
 						<h2>Pagá con tarjeta o en efectivo</h2>
-						<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago. ¡Y
+						<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago.
+							¡Y
 							siempre es seguro!</p>
 					</article>
 				</div>
@@ -197,5 +221,6 @@
 	</footer>
 	<!-- /footer -->
 
-</body>	
+</body>
+
 </html>
