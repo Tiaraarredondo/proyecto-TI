@@ -2,23 +2,21 @@ var express = require('express');
 var router = express.Router();
 const userController = require('../controllers/usercontroller');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
+// Ruta para la vista de registro
 router.get('/register', function (req, res) {
-  res.render('register'); // Asegúrate de que exista la vista 'register'
+  res.render('register'); // Renderiza la vista de registro (registro.ejs)
 });
 
-/* POST para procesar el formulario de registro */
-router.post('/register', userController.register);
+// Ruta POST para procesar el registro
+router.post('/register', userController.register); // Aquí se procesan los datos del formulario
 
-/* GET para mostrar el formulario de login */
+// Ruta para la vista de login
 router.get('/login', function (req, res) {
-  res.render('login'); // Asegúrate de que exista la vista 'login'
+  res.render('login'); // Renderiza la vista de login (login.ejs)
 });
 
-/* POST para procesar el formulario de login */
-router.post('/login', userController.login);
+// Ruta POST para procesar el login
+router.post('/login', userController.login); // Aquí se procesan los datos del formulario de login
+
 module.exports = router;
+
